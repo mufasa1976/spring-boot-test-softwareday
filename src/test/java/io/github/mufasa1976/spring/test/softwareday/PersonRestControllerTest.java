@@ -25,7 +25,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@Transactional
 public class PersonRestControllerTest {
   @Autowired
   private MockMvc restControllerWeb;
@@ -58,6 +57,7 @@ public class PersonRestControllerTest {
   }
 
   @Test
+  @Transactional
   public void getAll_OK_noDataFound() throws Exception {
     personRepository.deleteAll();
 
@@ -85,6 +85,7 @@ public class PersonRestControllerTest {
   }
 
   @Test
+  @Transactional
   public void create_OK() throws Exception {
     final Person person = objectMapper.readValue(
         restControllerWeb.perform(post("/api/persons")
@@ -110,6 +111,7 @@ public class PersonRestControllerTest {
   }
 
   @Test
+  @Transactional
   public void update_OK() throws Exception {
     final Person person = objectMapper.readValue(
         restControllerWeb.perform(put("/api/persons/1")
@@ -147,6 +149,7 @@ public class PersonRestControllerTest {
   }
 
   @Test
+  @Transactional
   public void delete_OK() throws Exception {
     assertThat(personRepository.findById(1L)).isPresent();
     restControllerWeb.perform(delete("/api/persons/1"))
