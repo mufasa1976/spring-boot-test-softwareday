@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.fail;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@DisplayName("Live Demo for the Presentation")
+@DisplayName("Live Demo for the Presentation - remember to remove the Exclusion if run by Maven")
 class LivePresentationTest {
   @Autowired
   private MockMvc restInterface;
