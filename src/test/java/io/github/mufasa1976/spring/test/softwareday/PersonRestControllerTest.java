@@ -85,6 +85,12 @@ public class PersonRestControllerTest {
   }
 
   @Test
+  public void getOneById_NOK_invalidId() throws Exception {
+    restControllerWeb.perform(get("/api/persons/invalidNumber"))
+                     .andExpect(status().isBadRequest());
+  }
+
+  @Test
   @Transactional
   public void create_OK() throws Exception {
     final Person person = objectMapper.readValue(
